@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CategoriaComponent } from './categoria/categoria.component';
+import { CategoriaComponent } from './administrador/categoria/categoria.component';
 
 @NgModule({
   declarations: [
