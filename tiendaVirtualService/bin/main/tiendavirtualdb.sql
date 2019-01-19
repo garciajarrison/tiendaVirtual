@@ -16,7 +16,7 @@ CREATE TABLE `factura`(
 -- Volcado de datos para la tabla `producto`
 --------------------------------------------------------------
 
-INSERT INTO `producto` (`id`, `fecha`, `total`) VALUES
+INSERT INTO `factura` (`id`, `fecha`, `total`) VALUES
 (1, null, 25000),
 (2, null, 35000);
 -----------------------------------------------------------
