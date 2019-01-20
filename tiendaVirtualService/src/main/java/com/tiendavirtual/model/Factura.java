@@ -21,7 +21,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-
 public class Factura {
 	
 	@Id
@@ -34,5 +33,4 @@ public class Factura {
 	@Column(name = "total")
 	private Integer total;
 	
-
 }

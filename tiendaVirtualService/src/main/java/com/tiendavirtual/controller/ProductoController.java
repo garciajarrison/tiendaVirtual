@@ -40,7 +40,7 @@ public class ProductoController {
 	@GetMapping("/")
     @ResponseBody
     public List<Producto> consultarTodas() {
-    	return (List<Producto>) productoBusiness.findAll();
+    	return (List<Producto>) productoBusiness.findByNombreAndPrecioOrderByNombre("Ropa para hombre", 32000d);
     }
 	
 	//Crear registro Save

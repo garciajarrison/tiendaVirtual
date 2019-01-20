@@ -19,5 +19,9 @@ public interface IProductoRepository extends JpaRepository<Producto, Integer> {
 	 @Query("select new com.tiendavirtual.model.Producto(p.id, p.nombre, p.estado, " + 
 	 		" p.descripcion, p.precio, p.cantidad, p.foto, p.categoria) " +
 	 		" from Producto p where p.id = ?1")
-	Optional<Producto> findById(Integer id);
+	Optional<Producto> pepitoPerez(Integer id);
+	 
+	 
+	 List<Producto> findByNombreAndPrecioOrderByNombre(String nombre, Double preciosssssss);
+	 
 }
