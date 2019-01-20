@@ -3,6 +3,7 @@ package com.tiendavirtual.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,13 +22,16 @@ import lombok.Setter;
 @Builder
 @Entity
 
-
 public class Factura {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "fecha")
 	private Date fecha;
+	
+	@Column(name = "total")
 	private Integer total;
 	
 
