@@ -8,6 +8,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {TableModule} from 'primeng/table';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    TableModule
+    TableModule,
+    ToastModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

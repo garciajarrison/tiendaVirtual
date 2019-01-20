@@ -1,18 +1,20 @@
-
+<p-toast></p-toast>
   <div class="formulario col-md-4 offset-md-4">
-    <form action="/my-handling-form-page" method="post">
+    <form [formGroup]="form" >
       <div>
           <label for="name">Nombre:</label><br>
-          <input type="texto" id="name" />
+          <input type="text" id="name" formControlName="nombre" />
       </div>
       <div>
-          <label for="email">Estado:</label><br>
-          <input type="email" id="email" />
+          <label for="estado">Estado:</label><br>
+          <input type="text" id="estado" formControlName="estado" />
       </div>
       <div>
           <label for="descripcion">Descripción:</label><br>
-          <textarea id="descripcion"></textarea>
+          <textarea id="descripcion" formControlName="descripcion"></textarea>
       </div>
+
+      <button (click)="crearCategorias()" [disabled]="form.invalid">Guardar</button>
 
 
       <p-table [value]="categorias" [paginator]="true" [rows]="10">
