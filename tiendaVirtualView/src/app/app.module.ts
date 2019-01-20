@@ -8,16 +8,20 @@ import { FacturaComponent } from './administrador/factura/factura.component';
 
 // services
 import {FacturaService } from './administrador/factura/factura.service'
+import { ProductoComponent } from './producto/producto.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriaComponent,
-    FacturaComponent
+    FacturaComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     FacturaService

@@ -1,0 +1,6 @@
+.formulario{
+    background:#EAEDED;
+}
+.formulario input, .formulario textarea{
+    width:100%;
+}
