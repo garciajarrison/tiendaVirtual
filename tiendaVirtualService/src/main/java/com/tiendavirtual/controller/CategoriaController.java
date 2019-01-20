@@ -26,6 +26,8 @@ import com.tiendavirtual.model.Categoria;
 @CrossOrigin("*")
 public class CategoriaController {
 	
+	
+	
 	@Autowired
 	ICategoriaRepository categoriaBusiness;
 

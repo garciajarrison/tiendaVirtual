@@ -20,5 +20,12 @@ export class CategoriaService {
     return this.http.get<Categoria[]>(this.url);
   }
 
+  public crearCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.url + 'crear/', categoria);
+  }
+
+  public updateNote(categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(this.url + categoria.id, categoria);
+  }
 
 }

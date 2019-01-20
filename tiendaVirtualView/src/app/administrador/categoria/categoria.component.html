@@ -2,7 +2,7 @@
   <div class="formulario col-md-4 offset-md-4">
     <form action="/my-handling-form-page" method="post">
       <div>
-          <label for="name">Name:</label><br>
+          <label for="name">Nombre:</label><br>
           <input type="texto" id="name" />
       </div>
       <div>
@@ -13,6 +13,27 @@
           <label for="descripcion">Descripción:</label><br>
           <textarea id="descripcion"></textarea>
       </div>
+
+
+      <p-table [value]="categorias" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td>{{rowData.nombre}}</td>
+                <td>{{rowData.descripcion}}</td>
+                <td>{{rowData.estado}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+
     </form>
   </div>
 
