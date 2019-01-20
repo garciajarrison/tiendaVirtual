@@ -4,17 +4,24 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriaComponent } from './administrador/categoria/categoria.component';
+import { FacturaComponent } from './administrador/factura/factura.component';
+
+// services
+import {FacturaService } from './administrador/factura/factura.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    FacturaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    FacturaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
