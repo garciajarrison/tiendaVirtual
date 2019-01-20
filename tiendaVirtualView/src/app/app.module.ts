@@ -4,16 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriaComponent } from './administrador/categoria/categoria.component';
-import { ProductoComponent } from './producto/producto.component';
+
+import { FacturaComponent } from './administrador/factura/factura.component';
+
+// services
+import {FacturaService } from './administrador/factura/factura.service'
+
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriaComponent,
-    ProductoComponent
+    FacturaComponent
   ],
   imports: [
     BrowserModule,
@@ -21,8 +27,12 @@ import {TableModule} from 'primeng/table';
     HttpClientModule,
     BrowserAnimationsModule,
     TableModule
+
   ],
-  providers: [],
+  providers: [
+    FacturaService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
