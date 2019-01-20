@@ -9,7 +9,7 @@
 CREATE TABLE `factura`(
   `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
-  `total` int(11) NOT NULL,
+  `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --------------------------------------------------------------
@@ -25,8 +25,7 @@ INSERT INTO `factura` (`id`, `fecha`, `total`) VALUES
 CREATE TABLE `detalle_factura`(
   `id` int(11) NOT NULL,
   `id_factura` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  
+  `id_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -----------------------------------------------------------
