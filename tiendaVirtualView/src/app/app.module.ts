@@ -15,6 +15,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import { ReactiveFormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TableModule,
     ToastModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
+    DialogModule
   ],
   providers: [
     FacturaService

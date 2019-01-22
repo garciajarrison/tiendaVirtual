@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Factura } from 'src/app/dto/factura';
 import { FacturaService } from './factura.service';
 
+
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
@@ -10,23 +11,21 @@ import { FacturaService } from './factura.service';
 export class FacturaComponent implements OnInit {
 
   private factura: Factura[];
+  display: boolean = false;
+
 
   constructor( private facturaService:FacturaService) { 
     console.log("constructor components ")
   }
 
   ngOnInit() {
-    this.actualizarFactura();
+    this.consultarFacturas();
   }
 
-  consultarFacturas(){
-    this.facturaService.consultarTodas().subscribe(
-      data => {
-        this.factura = data;
-        console.log(data);
-      }
-    )
-  }
+
+    showDialog() {
+        this.display = true;
+    }
 
   crearFactura(){
     const fact = new Factura();
@@ -38,7 +37,33 @@ export class FacturaComponent implements OnInit {
         this.consultarFacturas();
       }
     )
-    
+
+  }
+  
+  consultarFacturas(){
+    this.facturaService.consultarTodas().subscribe(
+      data => {
+        this.factura = data;
+        console.log(data);
+      }
+    )
+  }
+
+  actualizarFactura( id:number ){
+    alert(id);
+    // const fact = new Factura();
+    // fact.id = 4;
+    // fact.fecha = new Date();
+    // fact.total = 20000;
+    // this.facturaService.actualizarFactura(fact).subscribe(
+    //   data => {
+    //     console.log('Guardado');
+    //     this.consultarFacturas();
+
+    //   }
+      
+    // )
+
   }
 
   eliminarFactura(){
@@ -50,22 +75,6 @@ export class FacturaComponent implements OnInit {
 
       }
     )
-  }
-
-  actualizarFactura(){
-    const fact = new Factura();
-    fact.id = 4;
-    fact.fecha = new Date();
-    fact.total = 20000;
-    this.facturaService.actualizarFactura(fact).subscribe(
-      data => {
-        console.log('Guardado');
-        this.consultarFacturas();
-
-      }
-      
-    )
-
   }
 
 }
