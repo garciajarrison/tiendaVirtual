@@ -1,42 +1,42 @@
 <p>
-  factura works!
+    factura works!
 </p>
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
 
-        <p-dialog header="Title" [(visible)]="display">
-            Content
-        </p-dialog>
-        
-        <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Show"></button>
+            <p-dialog header="Title" [(visible)]="display">
+                Content
+            </p-dialog>
+
+            <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Show"></button>
 
 
-        <p-table [value]="factura" [paginator]="true" [rows]="10">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>ID</th>
-                    <th>FECHA</th>
-                    <th>FACTURA</th>
-                    <th>OPERACION</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-rowData>
-                <tr>
-                    <td>{{rowData.id}}</td>
-                    <td>{{rowData.fecha}}</td>
-                    <td>{{rowData.total}}</td>
-                    <td>
-      <button (click)="actualizarFactura()" [disabled]="form.invalid">Editar</button>
+            <p-table [value]="factura" [paginator]="true" [rows]="10">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>ID</th>
+                        <th>FECHA</th>
+                        <th>FACTURA</th>
+                        <th>OPERACION</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td>{{rowData.id}}</td>
+                        <td>{{rowData.fecha}}</td>
+                        <td>{{rowData.total}}</td>
+                        <td>
+                            <button (click)="actualizarFactura(rowData.id)" [disabled]="form.invalid">Editar</button>
 
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-     
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+
+        </div>
 
     </div>
-
-  </div>
 
 </div>

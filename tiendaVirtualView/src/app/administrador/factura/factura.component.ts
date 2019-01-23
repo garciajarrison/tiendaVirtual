@@ -10,7 +10,7 @@ import { FacturaService } from './factura.service';
 })
 export class FacturaComponent implements OnInit {
 
-  private factura: Factura[];
+  factura: Factura[];
   display: boolean = false;
 
 
