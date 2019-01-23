@@ -48,7 +48,7 @@ public class MensajeController {
 		return mensajeBusiness.save(mensaje);
 	}
 	
-	//Actualizar registro
+	
 	
 	 
 	

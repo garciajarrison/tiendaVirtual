@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.tiendavirtual.model.Mensaje;
 import com.tiendavirtual.model.Producto;
 
+@Repository
 public interface IMensajeRepository extends JpaRepository<Mensaje, Integer> {
 	
 
