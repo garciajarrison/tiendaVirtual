@@ -12,8 +12,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class CategoriaComponent implements OnInit {
 
-  private categorias: Categoria[];
-  private form: FormGroup;
+  categorias: Categoria[];
+  form: FormGroup;
 
 
   constructor(private categoriaService: CategoriaService,

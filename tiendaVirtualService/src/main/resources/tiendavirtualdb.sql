@@ -65,6 +65,26 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --------------------------------------------------------------
+-- Estructura de tabla para la tabla `comentario`
+--------------------------------------------------------------
+
+CREATE TABLE `comentario` (
+  `id` int(11) NOT NULL,
+  `mensaje` varchar(50) COLLATE utf8_spanish_ci NULL,
+  `valoracion` varchar(100) COLLATE utf8_spanish_ci NULL,
+  `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--------------------------------------------------------------
+-- Estructura de tabla para la tabla `mis_productos`
+--------------------------------------------------------------
+
+CREATE TABLE `mis_productos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `id_producto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+--------------------------------------------------------------
 -- Volcado de datos para la tabla `producto`
 --------------------------------------------------------------
 
@@ -98,6 +118,19 @@ ALTER TABLE `producto`
 ----------------------------------------------------------------
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id`);
+  
+  ---------------------------------------------------------------
+-- Indices de la tabla `comentario`
+----------------------------------------------------------------
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id`);
+  
+  ---------------------------------------------------------------
+-- Indices de la tabla `mis_productos`
+----------------------------------------------------------------
+ALTER TABLE `mis_productos`
+  ADD PRIMARY KEY (`id`);
+  
 
 
 
@@ -128,6 +161,18 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  
+  -----------------------------------------------------------
+-- AUTO_INCREMENT de la tabla `categoria`
+-----------------------------------------------------------
+ALTER TABLE `comentario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `mis_productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
   
