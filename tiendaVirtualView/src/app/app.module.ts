@@ -8,15 +8,16 @@ import { CategoriaComponent } from './administrador/categoria/categoria.componen
 import { FacturaComponent } from './administrador/factura/factura.component';
 
 // services
-import {FacturaService } from './administrador/factura/factura.service';
+import { FacturaService } from './administrador/factura/factura.service';
 
 import { HttpClientModule } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TableModule} from 'primeng/table';
-import {ToastModule} from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 import { ReactiveFormsModule } from '@angular/forms';
-import {DialogModule} from 'primeng/dialog';
-
+import { DialogModule } from 'primeng/dialog';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import {DialogModule} from 'primeng/dialog';
     ToastModule,
     ReactiveFormsModule,
     TableModule,
-    DialogModule
+    DialogModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [
     FacturaService
