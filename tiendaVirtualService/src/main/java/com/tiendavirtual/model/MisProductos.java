@@ -1,5 +1,6 @@
 package com.tiendavirtual.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,24 +16,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Mensaje {
+public class MisProductos {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "mensaje")
-	private String mensaje;
+	@Column(name = "nombre")
+	private String nombre;
 	
-	@Column(name = "valoracion")
-	private Integer valoracion;
-	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_producto")
+	private Producto producto;
 	
 	
 
