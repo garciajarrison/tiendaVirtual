@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,6 +49,21 @@ public class MensajeController {
 		return mensajeBusiness.save(mensaje);
 	}
 	
+	//Actualizar registro
+	@PutMapping("/actualizar/{id}")
+	public Mensaje updateNote(@PathVariable(value = "id") Integer mensajeId,
+			  @Valid @RequestBody Mensaje mensajeDetails) {
+		Mensaje mensaje = mensajeBusiness.findById(mensajeId)
+				.orElseThrow(() -> new ResourceNotFoundException());
+		
+		mensaje.setMensaje(mensajeDetails.getMensaje());
+		mensaje.setValoracion(mensajeDetails.getValoracion());
+		
+		Mensaje updateMensaje = mensajeBusiness.save(mensaje);
+		return updateMensaje;
+	}
+			
+			
 	
 	
 	 

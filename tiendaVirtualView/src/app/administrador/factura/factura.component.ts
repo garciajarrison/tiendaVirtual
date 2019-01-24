@@ -1,55 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { Factura } from 'src/app/dto/factura';
 import { FacturaService } from './factura.service';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
-  styles: []
+  providers: [MessageService],
 })
 export class FacturaComponent implements OnInit {
-
   factura: Factura[];
-  display: boolean = false;
+  form: FormGroup;
+  display = false;
 
-
-  constructor( private facturaService:FacturaService) { 
-    console.log("constructor components ")
+  constructor(
+    private facturaService: FacturaService,
+    private fb: FormBuilder,
+    private messagesService: MessageService
+  ) {
+    this.form = fb.group({
+      id: new FormControl(null),
+      fecha: [null, [Validators.required]],
+      total: [null, [Validators.required]],
+    });
   }
 
   ngOnInit() {
     this.consultarFacturas();
   }
 
+  showDialog() {
+    this.display = true;
+  }
 
-    showDialog() {
-        this.display = true;
-    }
-
-  crearFactura(){
+  crearFactura() {
     const fact = new Factura();
     fact.fecha = new Date();
     fact.total = 15450;
-    this.facturaService.crearFactura(fact).subscribe(
-      data => {
-        console.log(data);
-        this.consultarFacturas();
-      }
-    )
-
-  }
-  
-  consultarFacturas(){
-    this.facturaService.consultarTodas().subscribe(
-      data => {
-        this.factura = data;
-        console.log(data);
-      }
-    )
+    this.facturaService.crearFactura(fact).subscribe(data => {
+      console.log(data);
+      this.consultarFacturas();
+    });
   }
 
-  actualizarFactura( id:number ){
+  consultarFacturas() {
+    this.facturaService.consultarTodas().subscribe(data => {
+      this.factura = data;
+      console.log(data);
+    });
+  }
+
+  actualizarFactura(id: number) {
     alert(id);
     // const fact = new Factura();
     // fact.id = 4;
@@ -61,20 +64,15 @@ export class FacturaComponent implements OnInit {
     //     this.consultarFacturas();
 
     //   }
-      
+
     // )
-
   }
 
-  eliminarFactura(){
+  eliminarFactura() {
     const id = 1;
-    this.facturaService.eliminarFactura(id).subscribe(
-      data => {
-        console.log('Exito');
-        this.consultarFacturas();
-
-      }
-    )
+    this.facturaService.eliminarFactura(id).subscribe(data => {
+      console.log('Exito');
+      this.consultarFacturas();
+    });
   }
-
 }
