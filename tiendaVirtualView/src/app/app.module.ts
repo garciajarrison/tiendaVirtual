@@ -18,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { PanelModule } from 'primeng/panel';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { MessageModule } from 'primeng/message';
     TableModule,
     DialogModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    PanelModule,
+    CalendarModule,
+    MultiSelectModule
   ],
   providers: [
     FacturaService

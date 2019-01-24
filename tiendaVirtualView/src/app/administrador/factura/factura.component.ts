@@ -3,17 +3,31 @@ import { Factura } from 'src/app/dto/factura';
 import { FacturaService } from './factura.service';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/components/common/messageservice';
-
+import {MultiSelectModule} from 'primeng/multiselect';
+import {CalendarModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
-  providers: [MessageService],
+  styleUrls: ['./factura.component.css'],
+  providers: [MessageService, CalendarModule],
 })
+
+// @NgModule({
+//   imports: [
+//   // <= Componente
+//   MultiSelectModule,
+//     CalendarModule,
+
+//   ]
+ 
+// });
+
 export class FacturaComponent implements OnInit {
   factura: Factura[];
   form: FormGroup;
   display = false;
+  value: Date;
 
   constructor(
     private facturaService: FacturaService,
@@ -35,7 +49,7 @@ export class FacturaComponent implements OnInit {
     this.display = true;
   }
 
-  crearFactura() {
+  crearFacturas() {
     const fact = new Factura();
     fact.fecha = new Date();
     fact.total = 15450;
