@@ -21,13 +21,17 @@ import { MessageModule } from 'primeng/message';
 import { PanelModule } from 'primeng/panel';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CalendarModule} from 'primeng/calendar';
+import { MensajeComponent } from './administrador/mensaje/mensaje.component';
+import { MisProductosComponent } from './administrador/mis-productos/mis-productos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriaComponent,
-    FacturaComponent
+    FacturaComponent,
+    MensajeComponent,
+    MisProductosComponent
   ],
   imports: [
     BrowserModule,
