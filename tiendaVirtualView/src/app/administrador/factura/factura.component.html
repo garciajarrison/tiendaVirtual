@@ -10,43 +10,41 @@
             </p-dialog>
 
             <div class="jumbotron">
-              <h1 class="display-4">Formulario!</h1>
+                <h1 class="display-4">Formulario!</h1>
 
-               <form [formGroup]="form">
-     
-                <div class="row">
-                    
-                    <div class="col-md-12">
-                    <label for="fecha">Fecha:</label><br>
-                    <p-calendar  formControlName="fecha"></p-calendar>
+                <form [formGroup]="form">
 
-                    <p-message *ngIf="(form.controls.fecha.invalid && form.controls.fecha.touched)" severity="error" text="El campo es requerido.">
-                    </p-message>
-                    
+                    <div class="row">
 
-                       
+                        <div class="col-md-12">
+                            <label for="fecha">Fecha:</label><br>
+                            <p-calendar formControlName="fecha"></p-calendar>
+
+                            <!-- <p-message *ngIf="(form.controls.fecha.invalid && form.controls.fecha.touched)" severity="error" text="El campo es requerido.">
+                            </p-message> -->
+
+                        </div>
+                        <div class="col-md-12">
+                            <label for="total">Total:</label><br>
+                            <input class="form-control" type="text" id="total" formControlName="total" />
+                        </div>
+
+                        <!-- <p-message *ngIf="(form.controls.total.invalid && form.controls.total.touched)" severity="error" text="El campo es requerido.">
+                        </p-message> -->
+
                     </div>
-                    <div class="col-md-12">
-                        <label for="total">Total:</label><br>
-                    <input class="form-control" type="text" id="total" formControlName="total" />
-                    </div>
 
-                     <p-message *ngIf="(form.controls.total.invalid && form.controls.total.touched)" severity="error" text="El campo es requerido.">
-                    </p-message>
-                    
-                </div>
-        
-      
-                <br/>
-                <button>Guardar</button>
 
-            </form>
-              
+                    <br/>
+                    <button (click)="crearFacturas()" [disabled]="form.invalid">Guardar</button>
+
+                </form>
+
             </div>
 
-   
-        <p-table [value]="factura" [paginator]="true" [rows]="10">
-            <ng-template pTemplate="header">
+
+            <p-table [value]="factura" [paginator]="true" [rows]="10">
+                <ng-template pTemplate="header">
                     <tr>
                         <th>ID</th>
                         <th>FECHA</th>
@@ -60,13 +58,13 @@
                         <td>{{rowData.fecha}}</td>
                         <td>{{rowData.total}}</td>
                         <td>
-                           <!--  <button (click)="actualizarFactura(rowData.id)" [disabled]="form.invalid">Editar</button> -->
+                            <!--  <button (click)="actualizarFactura(rowData.id)" [disabled]="form.invalid">Editar</button> -->
                             <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Show"></button>
 
                         </td>
                     </tr>
                 </ng-template>
-        </p-table>
+            </p-table>
 
 
         </div>

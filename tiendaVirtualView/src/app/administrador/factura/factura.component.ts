@@ -10,18 +10,10 @@ import {CalendarModule} from 'primeng/primeng';
   selector: 'app-factura',
   templateUrl: './factura.component.html',
   styleUrls: ['./factura.component.css'],
-  providers: [MessageService, CalendarModule],
+  providers: [MessageService, MultiSelectModule, CalendarModule],
 })
 
-// @NgModule({
-//   imports: [
-//   // <= Componente
-//   MultiSelectModule,
-//     CalendarModule,
 
-//   ]
- 
-// });
 
 export class FacturaComponent implements OnInit {
   factura: Factura[];
@@ -29,11 +21,9 @@ export class FacturaComponent implements OnInit {
   display = false;
   value: Date;
 
-  constructor(
-    private facturaService: FacturaService,
+  constructor(private facturaService: FacturaService,
     private fb: FormBuilder,
-    private messagesService: MessageService
-  ) {
+    private messageService: MessageService) {
     this.form = fb.group({
       id: new FormControl(null),
       fecha: [null, [Validators.required]],
@@ -51,11 +41,15 @@ export class FacturaComponent implements OnInit {
 
   crearFacturas() {
     const fact = new Factura();
-    fact.fecha = new Date();
-    fact.total = 15450;
-    this.facturaService.crearFactura(fact).subscribe(data => {
+    fact.fecha = this.form.get('fecha').value;
+    fact.total = this.form.get('total').value;
+    this.facturaService.crearFactura(fact).subscribe(
+      data => {
+        this.form.get('fecha').setValue('');
+        this.form.get('total').setValue('');
       console.log(data);
       this.consultarFacturas();
+      this.messageService.add({severity: 'success', summary: 'Crear', detail: 'Registro creado con exito'});
     });
   }
 
@@ -66,27 +60,27 @@ export class FacturaComponent implements OnInit {
     });
   }
 
-  actualizarFactura(id: number) {
-    alert(id);
-    // const fact = new Factura();
-    // fact.id = 4;
-    // fact.fecha = new Date();
-    // fact.total = 20000;
-    // this.facturaService.actualizarFactura(fact).subscribe(
-    //   data => {
-    //     console.log('Guardado');
-    //     this.consultarFacturas();
+  // actualizarFactura(id: number) {
+  // alert(id);
+  // const fact = new Factura();
+  // fact.id = 4;
+  // fact.fecha = new Date();
+  // fact.total = 20000;
+  // this.facturaService.actualizarFactura(fact).subscribe(
+  //   data => {
+  //     console.log('Guardado');
+  //     this.consultarFacturas();
 
-    //   }
+  //   }
 
-    // )
-  }
+  // )
+  // }
 
-  eliminarFactura() {
-    const id = 1;
-    this.facturaService.eliminarFactura(id).subscribe(data => {
-      console.log('Exito');
-      this.consultarFacturas();
-    });
-  }
+  // eliminarFactura() {
+  //   const id = 1;
+  //   this.facturaService.eliminarFactura(id).subscribe(data => {
+  //     console.log('Exito');
+  //     this.consultarFacturas();
+  //   });
+  // }
 }

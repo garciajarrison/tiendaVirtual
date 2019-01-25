@@ -9,16 +9,16 @@ import { Observable } from 'rxjs';
 export class FacturaService {
     url = 'http://localhost:8088/tiendaVirtual/factura/';
 
-    constructor( private http: HttpClient){
+    constructor( private http: HttpClient) {
         console.log('Servicio listo');
     }
 
     /**
      * Consultar por id
      */
-    public consultarPorId(id: number):Observable<Factura> {
-        return  this.http.get<Factura>(this.url + id )
-        
+    public consultarPorId(id: number): Observable<Factura> {
+        return  this.http.get<Factura>(this.url + id );
+
     }
 
     /**
@@ -26,33 +26,29 @@ export class FacturaService {
      */
     public consultarTodas(): Observable<Factura[]> {
         return this.http.get<Factura[]>(this.url);
-        
+
     }
     /**
      * Crear registro Save
      */
     public crearFactura(factura: Factura): Observable<Factura> {
         return this.http.post<Factura>(this.url + 'crear/', factura);
-        
+
     }
 
     /**
      * Crear registro Save
      */
     public eliminarFactura(id: number): Observable<Factura> {
-        return this.http.delete<Factura>(this.url + 'borrar/'+ id);
-        
+        return this.http.delete<Factura>(this.url + 'borrar/' + id);
     }
 
 
      /**
      * actualizar  registro
      */
-    public actualizarFactura(factura:Factura): Observable<Factura> {
-        return this.http.put<Factura>(this.url + 'actualizar/'+ factura.id, factura);
+    public actualizarFactura(factura: Factura): Observable<Factura> {
+        return this.http.put<Factura>(this.url + 'actualizar/' + factura.id, factura);
     }
 
-    
-
-    
 }
