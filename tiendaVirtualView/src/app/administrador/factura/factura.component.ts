@@ -5,30 +5,61 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MessageService } from 'primeng/components/common/messageservice';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CalendarModule} from 'primeng/primeng';
+import { DatePipe } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
   styleUrls: ['./factura.component.css'],
-  providers: [MessageService, MultiSelectModule, CalendarModule],
+  providers: [MessageService, MultiSelectModule, CalendarModule, DatePipe],
 })
 
 
 
 export class FacturaComponent implements OnInit {
-  factura: Factura[];
-  form: FormGroup;
-  display = false;
-  value: Date;
 
-  constructor(private facturaService: FacturaService,
+  //VARIABLES
+  factura: Factura[];
+  facturaEditT: any;
+  value: Date;
+  doC = new Date();
+
+  // datex: new Date(this.contentTranslate.StartDate);
+
+  // OBJETO
+  dataObj: Object= {
+    id:0,
+    fecha: '01/15/1985',
+    total:5600
+  }
+
+  // FORMULARIOS
+  form: FormGroup;
+  forma: FormGroup;
+
+  // MODAL
+  display = false;
+  
+
+  constructor(private datePipe: DatePipe, private facturaService: FacturaService,
     private fb: FormBuilder,
     private messageService: MessageService) {
+
+// formulario registro
     this.form = fb.group({
       id: new FormControl(null),
       fecha: [null, [Validators.required]],
       total: [null, [Validators.required]],
     });
+
+// formulario modal
+    this.forma = new FormGroup({
+      'fechaEdit': new FormControl(''),
+      'totalEdit': new FormControl(''),
+
+    })
   }
 
   ngOnInit() {
@@ -38,7 +69,7 @@ export class FacturaComponent implements OnInit {
   showDialog() {
     this.display = true;
   }
-
+// modulo completo
   crearFacturas() {
     const fact = new Factura();
     fact.fecha = this.form.get('fecha').value;
@@ -52,12 +83,34 @@ export class FacturaComponent implements OnInit {
       this.messageService.add({severity: 'success', summary: 'Crear', detail: 'Registro creado con exito'});
     });
   }
-
+// modulo completo
   consultarFacturas() {
     this.facturaService.consultarTodas().subscribe(data => {
       this.factura = data;
       console.log(data);
     });
+  }
+
+  // modulo consulta por id
+  consultarId(id: number){
+          this.facturaService.consultarPorId(id).subscribe(data => {
+            this.dataObj['fecha'] = this.convertirFecha(data.fecha);
+            this.dataObj['total'] = data.total;
+            console.log(this.dataObj);
+          });
+    console.log(this.datePipe.transform(this.doC, this.dataObj['fecha'] ))
+
+
+    this.showDialog();//abro el modal
+
+  }
+
+  convertirFecha(dateIt:any){
+
+    console.log('fechaBd '+dateIt);
+    let myFecha = this.datePipe.transform(this.doC, dateIt)
+    return myFecha;
+
   }
 
   // actualizarFactura(id: number) {

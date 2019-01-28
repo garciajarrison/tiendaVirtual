@@ -15,23 +15,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { PanelModule } from 'primeng/panel';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CalendarModule} from 'primeng/calendar';
-import { MensajeComponent } from './administrador/mensaje/mensaje.component';
-import { MisProductosComponent } from './administrador/mis-productos/mis-productos.component';
+// import { MensajeComponent } from './administrador/mensaje/mensaje.component';
+// import { MisProductosComponent } from './administrador/mis-productos/mis-productos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriaComponent,
-    FacturaComponent,
-    MensajeComponent,
-    MisProductosComponent
+    FacturaComponent
+    // MensajeComponent,
+    // MisProductosComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +41,7 @@ import { MisProductosComponent } from './administrador/mis-productos/mis-product
     BrowserAnimationsModule,
     TableModule,
     ToastModule,
+    FormsModule,
     ReactiveFormsModule,
     TableModule,
     DialogModule,
@@ -47,7 +49,9 @@ import { MisProductosComponent } from './administrador/mis-productos/mis-product
     MessageModule,
     PanelModule,
     CalendarModule,
-    MultiSelectModule
+    MultiSelectModule,
+
+
   ],
   providers: [
     FacturaService

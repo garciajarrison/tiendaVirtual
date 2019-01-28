@@ -5,12 +5,54 @@
     <div class="row">
         <div class="col-md-12">
 
-            <p-dialog header="Title" [(visible)]="display">
-                Content
+            <!-- MODAL PARA EDITAR LOS DATOS -->
+
+        <p-dialog header="ForMulario par editar" [(visible)]="display" [responsive]="true" [style]="{width: '450px', minWidth: '800px'}" [minY]="70" 
+        [maximizable]="true" [baseZIndex]="10000" >
+
+
+                <form [formGroup]="forma" (ngSubmit)="actualizarFactura(1)">
+
+                      <div class="row">
+
+                        <div class="col-md-12">
+                            <label for="fecha">Fecha:</label><br>
+                            <p-calendar formControlName="fechaEdit" [(ngModel)]="doC" showButtonBar="true" dateFormat="yy/mm/dd"></p-calendar>
+
+                            <!-- <p-message *ngIf="(form.controls.fecha.invalid && form.controls.fecha.touched)" severity="error" text="El campo es requerido.">
+                            </p-message> -->
+
+                        </div>
+                        <div class="col-md-12">
+                            <label for="total">Total:</label><br>
+                            <input class="form-control" type="text" id="total"  formControlName="totalEdit" [ngModel]="dataObj.total" />
+                        </div>
+
+                        <!-- <p-message *ngIf="(form.controls.total.invalid && form.controls.total.touched)" severity="error" text="El campo es requerido.">
+                        </p-message> -->
+
+                    </div>
+
+                    <div>
+                        {{ facturaEditT | json }}
+                    </div>
+                    
+                </form>
+
+                <p-footer>
+                    <button type="button" pButton icon="pi pi-check" (click)="display=false" label="Yes"></button>
+                    <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+                </p-footer>
             </p-dialog>
+
+            <!-- FIN MODAL EDITAR -->
+
 
             <div class="jumbotron">
                 <h1 class="display-4">Formulario!</h1>
+
+
+
 
                 <form [formGroup]="form">
 
@@ -59,7 +101,7 @@
                         <td>{{rowData.total}}</td>
                         <td>
                             <!--  <button (click)="actualizarFactura(rowData.id)" [disabled]="form.invalid">Editar</button> -->
-                            <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Show"></button>
+                            <button type="button" (click)="consultarId(rowData.id)" pButton icon="pi pi-info-circle" label="Show"></button>
 
                         </td>
                     </tr>
