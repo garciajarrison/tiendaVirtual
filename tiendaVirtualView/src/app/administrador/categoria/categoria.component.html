@@ -1,50 +1,46 @@
 <p-toast></p-toast>
-  <div class="formulario col-md-4 offset-md-4">
-    <form [formGroup]="form" >
-      <div>
-          <label for="name">Nombre:</label><br>
-          <input type="text" id="name" formControlName="nombre" />
-          <p-message *ngIf="(form.controls.nombre.invalid && form.controls.nombre.touched)" 
-                severity="error" text="El campo es requerido.">
-          </p-message>
-      </div>
-      <div>
-          <label for="estado">Estado:</label><br>
-          <input type="text" id="estado" formControlName="estado" />
-          <p-message *ngIf="(form.controls.estado.invalid && form.controls.estado.touched)" 
-                severity="error" text="El campo es requerido.">
-          </p-message>
-      </div>
-      <div>
-          <label for="descripcion">Descripción:</label><br>
-          <textarea id="descripcion" formControlName="descripcion"></textarea>
-          <p-message  *ngIf="(form.controls.descripcion.invalid && form.controls.descripcion.touched)" 
-                severity="error" text="El campo es requerido.">
-          </p-message>
-      </div>
+<div class="formulario col-md-4 offset-md-4">
+    <form [formGroup]="form">
+        <div>
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name" formControlName="nombre" />
+            <p-message *ngIf="(form.controls.nombre.invalid && form.controls.nombre.touched)" severity="error" text="El campo es requerido.">
+            </p-message>
+        </div>
+        <div>
+            <label for="estado">Estado:</label><br>
+            <input type="text" id="estado" formControlName="estado" />
+            <p-message *ngIf="(form.controls.estado.invalid && form.controls.estado.touched)" severity="error" text="El campo es requerido.">
+            </p-message>
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label><br>
+            <textarea id="descripcion" formControlName="descripcion"></textarea>
+            <p-message *ngIf="(form.controls.descripcion.invalid && form.controls.descripcion.touched)" severity="error" text="El campo es requerido.">
+            </p-message>
+        </div>
 
-      <button (click)="crearCategorias()" [disabled]="form.invalid">Guardar</button>
-      <br/><br/><br/>
+        <button (click)="crearCategorias()" [disabled]="form.invalid">Guardar</button>
+        <br/><br/><br/>
 
-      <p-table [value]="categorias" [paginator]="true" [rows]="10">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData>
-            <tr>
-                <td>{{rowData.nombre}}</td>
-                <td>{{rowData.descripcion}}</td>
-                <td>{{rowData.estado}}</td>
-            </tr>
-        </ng-template>
-    </p-table>
+        <p-table [value]="categorias" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData>
+                <tr>
+                    <td>{{rowData.nombre}}</td>
+                    <td>{{rowData.descripcion}}</td>
+                    <td>{{rowData.estado}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
 
 
 
     </form>
-  </div>
-
+</div>

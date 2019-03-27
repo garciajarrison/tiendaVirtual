@@ -15,9 +15,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { PanelModule } from 'primeng/panel';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {CalendarModule} from 'primeng/calendar';
+// import { MensajeComponent } from './administrador/mensaje/mensaje.component';
+// import { MisProductosComponent } from './administrador/mis-productos/mis-productos.component';
 
 
 @NgModule({
@@ -25,6 +31,8 @@ import { MessageModule } from 'primeng/message';
     AppComponent,
     CategoriaComponent,
     FacturaComponent
+    // MensajeComponent,
+    // MisProductosComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +41,17 @@ import { MessageModule } from 'primeng/message';
     BrowserAnimationsModule,
     TableModule,
     ToastModule,
+    FormsModule,
     ReactiveFormsModule,
     TableModule,
     DialogModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    PanelModule,
+    CalendarModule,
+    MultiSelectModule,
+
+
   ],
   providers: [
     FacturaService

@@ -68,12 +68,25 @@ CREATE TABLE `producto` (
 -- Estructura de tabla para la tabla `comentario`
 --------------------------------------------------------------
 
-CREATE TABLE `comentario` (
+CREATE TABLE `mensaje` (
   `id` int(11) NOT NULL,
   `mensaje` varchar(50) COLLATE utf8_spanish_ci NULL,
   `valoracion` varchar(100) COLLATE utf8_spanish_ci NULL,
-  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--------------------------------------------------------------
+-- Volcado de datos para la tabla `mensaje`
+--------------------------------------------------------------
+
+INSERT INTO `mensaje` (`id`, `mensaje`,`valoracion`) VALUES
+(1, 'Muy buenos los productos',4),
+(2, 'Tienen garantia?', 6),
+(3, 'No me gustan de segunda jejej', 10)
+
+
+
+
 
 --------------------------------------------------------------
 -- Estructura de tabla para la tabla `mis_productos`
@@ -88,9 +101,9 @@ CREATE TABLE `mis_productos` (
 -- Volcado de datos para la tabla `producto`
 --------------------------------------------------------------
 
-INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `estado`, `precio`, `cantidad`, `foto`, `id_categoria`) VALUES
-(1, 'Ropa para hombre', 'Baico para hombre', 1, 35000, 32, 'otro', 1),
-(2, 'Ropa para hombre', 'basico par hombre', 1, 32000, 43, 'otro', 2);
+INSERT INTO `mis_productos` (`id`, `nombre`, 1) VALUES
+(1, 'Pantalon', 2),
+(2, 'Camisa de hombre', 1);
 
 ---------------------------------------------------------------
 -- Ã�ndices para tablas volcadas
@@ -122,7 +135,7 @@ ALTER TABLE `categoria`
   ---------------------------------------------------------------
 -- Indices de la tabla `comentario`
 ----------------------------------------------------------------
-ALTER TABLE `comentario`
+ALTER TABLE `mensaje`
   ADD PRIMARY KEY (`id`);
   
   ---------------------------------------------------------------
@@ -166,8 +179,8 @@ ALTER TABLE `producto`
   -----------------------------------------------------------
 -- AUTO_INCREMENT de la tabla `categoria`
 -----------------------------------------------------------
-ALTER TABLE `comentario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `mensaje`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
